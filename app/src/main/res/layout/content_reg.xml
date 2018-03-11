@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.gsr_pc.myproject0324.RegActivity"
+    tools:showIn="@layout/activity_reg">
+    <LinearLayout
+        android:id="@+id/regETLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#d5ffa5">
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/regETUname"
+            android:hint="@string/login_et_uname"/>
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/regETUpwd"
+            android:hint="@string/login_et_upwd"/>
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/regETUrpwd"
+            android:hint="@string/login_et_rupwd"/>
+        <LinearLayout
+            android:id="@+id/btnLayout"
+            android:layout_margin="40px"
+            android:layout_below="@+id/etLayout"
+            android:background="#FFFFFF"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <Button
+                android:id="@+id/reg_rewrite"
+                android:text="@string/reg_rewrite"
+                android:layout_margin="2pt"
+                android:layout_width="50pt"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/login_btn_reg"
+                android:text="@string/login_btn_reg"
+                android:layout_margin="2pt"
+                android:layout_width="50pt"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

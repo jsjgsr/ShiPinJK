@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.gsr_pc.myproject0324.ChangePwdActivity"
+    tools:showIn="@layout/activity_change_pwd">
+    <LinearLayout
+        android:id="@+id/etTitle"
+        android:background="#d5ffa5"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="@string/user_info_change_pwd"
+            android:gravity="center_horizontal"
+            android:textSize="20pt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/etLayout"
+        android:layout_below="@+id/etTitle"
+        android:background="#d5ffa5"
+        android:orientation="vertical"
+        android:layout_marginTop="5pt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/etChaPwd"
+            android:hint="@string/loginUPwd"
+            android:textSize="10pt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/etChaNewPwd"
+            android:hint="@string/NewPwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/etChaReNewPwd"
+            android:hint="@string/ReNewPwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@id/etLayout"
+        android:layout_marginTop="5pt"
+        android:id="@+id/btnLayout"
+        android:background="#d5ffa5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+        <Button
+            android:id="@+id/btnReWrite"
+            android:text="@string/reg_rewrite"
+            android:layout_margin="2pt"
+            android:layout_width="50pt"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btnToChaPwd"
+            android:text="@string/btn_save"
+            android:layout_margin="2pt"
+            android:layout_width="50pt"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+</RelativeLayout>

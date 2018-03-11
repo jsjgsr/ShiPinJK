@@ -1,0 +1,111 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 368656 bytes for Chunk::new
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (allocation.cpp:323), pid=13032, tid=13100
+#
+# JRE version:  (7.0_45-b18) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (24.45-b08 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000000003030800):  JavaThread "Unknown thread" [_thread_in_vm, id=13100, stack(0x0000000002f30000,0x0000000003030000)]
+
+Stack: [0x0000000002f30000,0x0000000003030000]
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x0000000003030800 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=13100, stack(0x0000000002f30000,0x0000000003030000)]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x00007ff7b5f30000 - 0x00007ff7b5f63000 	D:\Java\jdk1.7.0_45\bin\java.exe
+0x00007ffad5c80000 - 0x00007ffad5e42000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ffad3620000 - 0x00007ffad36cd000 	C:\WINDOWS\system32\KERNEL32.DLL
+0x00007ffad3130000 - 0x00007ffad330d000 	C:\WINDOWS\system32\KERNELBASE.dll
+0x00007ffad5010000 - 0x00007ffad50b6000 	C:\WINDOWS\system32\ADVAPI32.dll
+0x00007ffad5a30000 - 0x00007ffad5acd000 	C:\WINDOWS\system32\msvcrt.dll
+0x00007ffad5890000 - 0x00007ffad58eb000 	C:\WINDOWS\system32\sechost.dll
+0x00007ffad5280000 - 0x00007ffad53a6000 	C:\WINDOWS\system32\RPCRT4.dll
+0x00007ffad3470000 - 0x00007ffad35be000 	C:\WINDOWS\system32\USER32.dll
+0x00007ffad56f0000 - 0x00007ffad5876000 	C:\WINDOWS\system32\GDI32.dll
+0x00007fface6a0000 - 0x00007fface914000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.10240.16384_none_f41f7b285750ef43\COMCTL32.dll
+0x00007ffad5c40000 - 0x00007ffad5c76000 	C:\WINDOWS\system32\IMM32.DLL
+0x00007ffad3310000 - 0x00007ffad346c000 	C:\WINDOWS\system32\MSCTF.dll
+0x000000006d880000 - 0x000000006d952000 	D:\Java\jdk1.7.0_45\jre\bin\msvcr100.dll
+0x000000006dd10000 - 0x000000006e4d9000 	D:\Java\jdk1.7.0_45\jre\bin\server\jvm.dll
+0x00007ffad5880000 - 0x00007ffad5888000 	C:\WINDOWS\system32\PSAPI.DLL
+0x00007fface110000 - 0x00007fface119000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ffad07c0000 - 0x00007ffad07e3000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ffad5960000 - 0x00007ffad59c9000 	C:\WINDOWS\system32\WS2_32.dll
+0x00007ffad50c0000 - 0x00007ffad50c8000 	C:\WINDOWS\system32\NSI.dll
+0x00007ffad0790000 - 0x00007ffad07bc000 	C:\WINDOWS\SYSTEM32\WINMMBASE.dll
+0x00007ffad30e0000 - 0x00007ffad3124000 	C:\WINDOWS\system32\cfgmgr32.dll
+0x00007ffad0f40000 - 0x00007ffad0f67000 	C:\WINDOWS\SYSTEM32\DEVOBJ.dll
+0x000000006dd00000 - 0x000000006dd0f000 	D:\Java\jdk1.7.0_45\jre\bin\verify.dll
+0x000000006dcd0000 - 0x000000006dcf8000 	D:\Java\jdk1.7.0_45\jre\bin\java.dll
+0x000000006dcb0000 - 0x000000006dcc5000 	D:\Java\jdk1.7.0_45\jre\bin\zip.dll
+
+VM Arguments:
+jvm_args: -Djava.awt.headless=true -Xmx1024M -Dfile.encoding=GBK -Duser.country=CN -Duser.language=zh -Duser.variant 
+java_command: com.android.dx.command.Main --dex --num-threads=4 --output F:\AndroidStudioProjects\MyProject0324\app\build\intermediates\pre-dexed\debug\gson-2.1_0dce35f6e00f51881936491ca8a33e64c42688e0.jar F:\AndroidStudioProjects\MyProject0324\app\libs\gson-2.1.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=D:\Java\jdk1.7.0_45
+CLASSPATH=.;d:\java 32λ\lib\sound.jar;d:\java 32λ\lib\jmf.jar;d:\java 32λ\lib;.;.;d:\java\jdk1.7.0_45\lib\sound.jar;d:\java\jdk1.7.0_45\lib\jmf.jar;d:\java\jdk1.7.0_45\lib;
+PATH=C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;D:\Java\jdk1.7.0_45\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;D:\Java\jdk1.7.0_45\jre\bin;D:\MySQL\MySQL Server 5.0\bin;C:\Program Files (x86)\Skype\Phone\
+USERNAME=gsr-pc
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 58 Stepping 9, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 8 , 64 bit Build 9200 
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 58 stepping 9, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, aes, erms, ht, tsc, tscinvbit, tscinv
+
+Memory: 4k page, physical 6191464k(1072108k free), swap 7882088k(5328k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (24.45-b08) for windows-amd64 JRE (1.7.0_45-b18), built on Oct  8 2013 05:47:22 by "java_re" with unknown MS VC++:1600
+
+time: Tue May 03 17:41:06 2016
+elapsed time: 0 seconds
+

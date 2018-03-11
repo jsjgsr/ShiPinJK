@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.gsr_pc.myproject0324.AddConnectActivity"
+    tools:showIn="@layout/add">
+
+    <LinearLayout
+        android:id="@+id/etTitle"
+        android:background="#d5ffa5"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="wrap_content"
+            android:text="@string/add_ip"
+            android:width="60dip"
+            android:layout_margin="0dip"
+            android:height="16dip"
+            android:layout_height="fill_parent"/>
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:text="192.168.23.1"
+
+            android:id="@+id/FtpIp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@id/etTitle"
+        android:id="@+id/etTitle1"
+        android:background="#d5ffa5"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/TextView03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="60dip"
+            android:text="@string/add_type">
+
+        </TextView>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:id="@+id/SpinnerFtpType"
+            android:layout_height="36dip">
+
+        </Spinner>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@id/etTitle1"
+        android:id="@+id/etTitle2"
+        android:background="#d5ffa5"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/TextView04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_port" android:width="60dip">
+
+        </TextView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:width="250dip"
+            android:numeric="integer"
+            android:text="6000"
+
+            android:id="@+id/FtpPort">
+
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@id/etTitle2"
+        android:id="@+id/etaaa"
+        android:background="#d5ffa5"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/TextView09"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_port2" android:width="60dip">
+
+        </TextView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:width="250dip"
+            android:numeric="integer"
+            android:text="8888"
+            android:id="@+id/FtpPort1">
+
+        </EditText>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_below="@id/etaaa"
+        android:id="@+id/etTitle3"
+        android:background="#d5ffa5"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/TextView07"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_localdir"
+            android:width="60dip">
+
+        </TextView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:width="250dip"
+            android:text="/sdcard"
+            android:id="@+id/FtpLocalDir">
+
+        </EditText>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_below="@id/etTitle3"
+        android:layout_marginTop="5pt"
+        android:id="@+id/btnLayout"
+        android:background="#d5ffa5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+        <Button
+            android:text="@string/btn_save"
+            android:id="@+id/BtnSave"
+            android:layout_margin="2pt"
+            android:layout_width="50pt"
+            android:layout_height="wrap_content" />
+        <Button
+            android:text="@string/btn_cancle"
+            android:id="@+id/BtnCancle"
+            android:layout_margin="2pt"
+            android:layout_width="50pt"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+</RelativeLayout>
