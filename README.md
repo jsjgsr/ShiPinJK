@@ -1,4 +1,131 @@
 # ShiPinJK
+### 1、登录页面提示
+为了能让登录注册按钮在父布局中居中显示，可以用
+ <LinearLayout
+            android:id="@+id/btnLayout"
+            android:layout_margin="40px"
+            android:layout_below="@+id/etLayout"
+            android:background="#FFFFFF"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <Button
+                android:id="@+id/reg_rewrite"
+                android:text="@string/reg_rewrite"
+                android:layout_margin="2pt"
+                android:layout_width="50pt"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/login_btn_reg"
+                android:text="@string/login_btn_reg"
+                android:layout_margin="2pt"
+                android:layout_width="50pt"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+ 两个空的TextView控件夹着两个按钮，调用android:layout_weight="1"。这个是按照权重比来分配的布局。
+### 2、SharedPreferences的使用
+SharedPreferences可以用来保存键值对数据，将保存的数据持久化到手机中
+        //保存
+        SharedPreferences sharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE);//初始，以user命名的数据
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();//清空数据
+        editor.putString("uid", data.get(0).get("uid"));
+        editor.putString("uname", data.get(0).get("uname"));
+        editor.commit();
+        //读取
+        SharedPreferences preferences = getSharedPreferences("user", MODE_PRIVATE);//
+        String uid = preferences.getString("uid", "");//获取key是uid的数据
+        Integer id = Integer.parseInt(uid);
+### 3、Handler机制中，Serializable序列化信息并线程通过Message发送信息给Handler
+        Message message = new Message();
+        Bundle bundle = new Bundle();
+        message.setData(bundle);//将bundle绑定到message中
+        bundle.putSerializable("res",data);//data为数据，通过Serializable序列换放到bundle中
+        handler.sendMessage(message);
+        //获取
+         ArrayList<Map<String, String>> data = (ArrayList<Map<String, String>>) msg.getData().getSerializable("res");
+因为data的属性是ArrayList<Map<String, String>>，所以要强制转换一下
+### 4、HttpClient的网络请求
+       HttpClient client = new DefaultHttpClient();//获取httpclient对象
+       HttpGet request = new HttpGet(url);//Get请求就用HttpGet（将发送信息放到url中），Post请求就用HttpPost，但是还要加上Entity，将数据放到Http头部
+       HttpResponse response = null;//用于接收返回的数据
+       response = client.execute(request);
+       if(response.getStatusLine().getStatusCode() == 200){//当没有数据的时候是消息阻塞的，如果有消息先验证服务器返回的状态码，200：正常，404：没有找到资源，500：服务器异常。
+         String resultStr = EntityUtils.toString(response.getEntity(),"UTF-8");//汉子要转字符集
+           //解析操作
+        }
+### JSONObject解析json字符串
+        ArrayList<Map<String,String>> data = new ArrayList<Map<String, String>>();//用于放置Map对象的数组
+        Map<String,String> jsonMap = new HashMap<String, String>();//一个键值对
+        JSONObject jsonObject = new JSONObject(resultStr);//将json字符串转为jsonobject对象
+        Iterator<String> tempKeys = jsonObject.keys();//获取所有的key
+        while(tempKeys.hasNext()){//遍历每一个key，将key与value放入Map中
+                String key = tempKeys.next();
+                jsonMap.put(key,temp.getString(key));//获得数组里面的values值
+         }
+         data.add(jsonMap);
+### 下拉菜单的使用Spinner
+           <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/SpinnerLdapConfig"/>
+            
+             protected Spinner spinner;
+             private Cursor cursor;//游标
+             spinner = (Spinner) findViewById(R.id.SpinnerLdapConfig);
+             ....查询数据库将查处的数据放入到游标中Cursor
+              //第一个当前类名.第二个要显示的布局文件,第三个信息,第四个哪一个属性用来显示,第五个各键值的值要显示的位置
+           SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
+                   android.R.layout.simple_spinner_item,
+                   cursor,
+                   new String[] { "name" },
+                   new int[] { android.R.id.text1 });
+           adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);//定义样式
+           spinner.setAdapter(adapter);//显示数据库导的数据
+           spinner.refreshDrawableState();//刷新Android的列表视图
+### SQLite使用
+    定义一个DatabaseHelper类用于对数据进行操作。在class中定义一个静态static class Helper（在Java世界里，经常被提到静态这个概念，static作为静态成员变量和成员函数的修饰符，意味着它为该类的所有实例所共享，也就是说当某个类的实例修改了该静态成员变量，其修改值为该类的其它所有实例所见。最近一个项目里频繁用到static修饰的内部类，再读了一下《Effective Java》才明白为什么会用static来修饰一个内部类也就是本文的中心——静态类。），extends SQLiteOpenHelper，重写：
+    public void onCreate(SQLiteDatabase db) {//当数据库被首次创建时执行该方法，一般将创建表等初始化操作在该方法中执行。
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {//当打开数据库时传入的版本号与当前的版本号不同时会调用该方法。
+    和Helper自己的构造函数
+在DatabaseHelper中就可以共享这个静态类。
+     protected SQLiteDatabase db;
+      public DatabaseHelper(Context context) {//构造函数
+        this.context = context;
+        db = new Helper(context).getWritableDatabase();//获取数据库连接
+      }
+         
+### AlertDialog对话框使用
+new AlertDialog.Builder(MyMenuActivity.this).setTitle("确定删除吗？").setMessage("确定删除吗？" + name + "吗？")
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {//点击确认按钮
+                                                           public void onClick(DialogInterface dialog, int which) {
+                                                              try {
+                                                                  DatabaseHelper//对保存数据的操作
+                                                                          .delete(MyMenuActivity.this, id);
+                                                                  fillDataWithCursor();
+                                                                  ActivtyUtil.openToast(MyMenuActivity.this,
+                                                                          "删除成功!");
+                                                              } catch (Exception e) {
+                                                                  Log.e(TAGaa, e.getMessage(), e);
+                                                                  ActivtyUtil.openToast(MyMenuActivity.this, e
+                                                                          .getMessage());
+                                                              }
+                                                          }
+                                                      })
+                           .setNegativeButton("取消",new DialogInterface.OnClickListener() {//点击取消按钮
+                                                        public void onClick(DialogInterface dialog, int which) {
+                                                          }
+                                                      }).show();
+### 实现带editext的AlertDialog
+自定义类public class EditDialog extends AlertDialog implements DialogInterface.OnClickListener
 ### SurfaceView 介绍 
 在布局文件里定义了 SurfaceView，用于显示摄像头的画面。 
 SurfaceView 是用来画图（显示图像）的，SurfaceHolder 是一个接口，
@@ -21,7 +148,7 @@ surfaceCreated（）（意义：当 surface 第一次创建的时候，这个方
 立即调用。这个方法的实现可以完成 surface 创建后的一些初始化工作）、
 surfaceDestroyed（）（意义：在一个 surface 被销毁前，这个方法会被调用。
 在这个调用返回后，你再也不应该去访问 surface 了）三个方法。 
-
+#### 在surfaceCreated方法中开启捕获视频流的线程，并将surface对象传到获取视频流的地方，利用paint和canvas将视频流照片画到surface中
 ### 对于Bitmap的使用回收 
 　1) 要及时回收Bitmap的内存
 
