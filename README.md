@@ -62,7 +62,7 @@ SharedPreferences可以用来保存键值对数据，将保存的数据持久化
          String resultStr = EntityUtils.toString(response.getEntity(),"UTF-8");//汉子要转字符集
            //解析操作
         }
-### JSONObject解析json字符串
+### 5、JSONObject解析json字符串
         ArrayList<Map<String,String>> data = new ArrayList<Map<String, String>>();//用于放置Map对象的数组
         Map<String,String> jsonMap = new HashMap<String, String>();//一个键值对
         JSONObject jsonObject = new JSONObject(resultStr);//将json字符串转为jsonobject对象
@@ -72,7 +72,7 @@ SharedPreferences可以用来保存键值对数据，将保存的数据持久化
                 jsonMap.put(key,temp.getString(key));//获得数组里面的values值
          }
          data.add(jsonMap);
-### 下拉菜单的使用Spinner
+### 6、下拉菜单的使用Spinner
            <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -103,7 +103,7 @@ SharedPreferences可以用来保存键值对数据，将保存的数据持久化
         db = new Helper(context).getWritableDatabase();//获取数据库连接
       }
          
-### AlertDialog对话框使用
+### 7、AlertDialog对话框使用
 new AlertDialog.Builder(MyMenuActivity.this).setTitle("确定删除吗？").setMessage("确定删除吗？" + name + "吗？")
                             .setPositiveButton("确定", new DialogInterface.OnClickListener() {//点击确认按钮
                                                            public void onClick(DialogInterface dialog, int which) {
@@ -124,9 +124,9 @@ new AlertDialog.Builder(MyMenuActivity.this).setTitle("确定删除吗？").setM
                                                         public void onClick(DialogInterface dialog, int which) {
                                                           }
                                                       }).show();
-### 实现带editext的AlertDialog
+### 8、实现带editext的AlertDialog
 自定义类public class EditDialog extends AlertDialog implements DialogInterface.OnClickListener
-### SurfaceView 介绍 
+### 9、SurfaceView 介绍 
 在布局文件里定义了 SurfaceView，用于显示摄像头的画面。 
 SurfaceView 是用来画图（显示图像）的，SurfaceHolder 是一个接口，
 用来控制 SurfaceView 的。 
@@ -149,7 +149,7 @@ surfaceCreated（）（意义：当 surface 第一次创建的时候，这个方
 surfaceDestroyed（）（意义：在一个 surface 被销毁前，这个方法会被调用。
 在这个调用返回后，你再也不应该去访问 surface 了）三个方法。 
 #### 在surfaceCreated方法中开启捕获视频流的线程，并将surface对象传到获取视频流的地方，利用paint和canvas将视频流照片画到surface中
-### 对于Bitmap的使用回收 
+### 10、对于Bitmap的使用回收 
 　1) 要及时回收Bitmap的内存
 
 　　Bitmap类有一个方法recycle()，从方法名可以看出意思是回收。这里就有疑问了，Android系统有自己的垃圾回收机制，可以不定期的回收掉不使用的内存空间，当然也包括Bitmap的空间。那为什么还需要这个方法呢?
