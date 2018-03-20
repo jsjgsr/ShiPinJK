@@ -32,7 +32,7 @@
         </LinearLayout>
  两个空的TextView控件夹着两个按钮，调用android:layout_weight="1"。这个是按照权重比来分配的布局。
 ### 2、SharedPreferences的使用
-SharedPreferences可以用来保存键值对数据，将保存的数据持久化到手机中
+	SharedPreferences可以用来保存键值对数据，将保存的数据持久化到手机中
         //保存
         SharedPreferences sharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE);//初始，以user命名的数据
         SharedPreferences.Editor editor = sharedPreferences.edit();
