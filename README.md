@@ -91,7 +91,7 @@ SharedPreferences可以用来保存键值对数据，将保存的数据持久化
            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);//定义样式
            spinner.setAdapter(adapter);//显示数据库导的数据
            spinner.refreshDrawableState();//刷新Android的列表视图
-### SQLite使用
+### 7、SQLite使用
     定义一个DatabaseHelper类用于对数据进行操作。在class中定义一个静态static class Helper（在Java世界里，经常被提到静态这个概念，static作为静态成员变量和成员函数的修饰符，意味着它为该类的所有实例所共享，也就是说当某个类的实例修改了该静态成员变量，其修改值为该类的其它所有实例所见。最近一个项目里频繁用到static修饰的内部类，再读了一下《Effective Java》才明白为什么会用static来修饰一个内部类也就是本文的中心——静态类。），extends SQLiteOpenHelper，重写：
     public void onCreate(SQLiteDatabase db) {//当数据库被首次创建时执行该方法，一般将创建表等初始化操作在该方法中执行。
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {//当打开数据库时传入的版本号与当前的版本号不同时会调用该方法。
@@ -103,7 +103,7 @@ SharedPreferences可以用来保存键值对数据，将保存的数据持久化
         db = new Helper(context).getWritableDatabase();//获取数据库连接
       }
          
-### 7、AlertDialog对话框使用
+### 8、AlertDialog对话框使用
 new AlertDialog.Builder(MyMenuActivity.this).setTitle("确定删除吗？").setMessage("确定删除吗？" + name + "吗？")
                             .setPositiveButton("确定", new DialogInterface.OnClickListener() {//点击确认按钮
                                                            public void onClick(DialogInterface dialog, int which) {
@@ -124,9 +124,9 @@ new AlertDialog.Builder(MyMenuActivity.this).setTitle("确定删除吗？").setM
                                                         public void onClick(DialogInterface dialog, int which) {
                                                           }
                                                       }).show();
-### 8、实现带editext的AlertDialog
+### 9、实现带editext的AlertDialog
 自定义类public class EditDialog extends AlertDialog implements DialogInterface.OnClickListener
-### 9、SurfaceView 介绍 
+### 10、SurfaceView 介绍 
 在布局文件里定义了 SurfaceView，用于显示摄像头的画面。 
 SurfaceView 是用来画图（显示图像）的，SurfaceHolder 是一个接口，
 用来控制 SurfaceView 的。 
@@ -149,7 +149,36 @@ surfaceCreated（）（意义：当 surface 第一次创建的时候，这个方
 surfaceDestroyed（）（意义：在一个 surface 被销毁前，这个方法会被调用。
 在这个调用返回后，你再也不应该去访问 surface 了）三个方法。 
 #### 在surfaceCreated方法中开启捕获视频流的线程，并将surface对象传到获取视频流的地方，利用paint和canvas将视频流照片画到surface中
-### 10、对于Bitmap的使用回收 
+### Socket连接与Bitmap解码
+   Socket msocket = new Socket();
+   
+   msocket.bind(null);//绑定一个名字
+   
+			/*调用bind()函数之后，为socket()函数创建的套接字关联一个相应地址，发送到这个地址的数据可以通过该套接字读取与使用。*/
+   
+   
+			msocket.setSoTimeout(SOCKET_TIMEOUT);//超过10秒后
+   
+			msocket.connect(new InetSocketAddress(address, port), SOCKET_TIMEOUT);//address是ip地址，port是端口号
+   
+   
+   在使用Socket来连接服务器时最简单的方式就是直接使用IP和端口，但Socket类中的connect方法并未提供这种方式，而是使用SocketAddress类来向connect方法传递服务器的IP和端口。
+SocketAddress只是个抽象类，它除了有一个默认的构造方法外，其它的方法都是abstract的，因此，我们必须使用SocketAddress的子类来建立SocketAddress对象，也就是唯一的子类InetSocketAddress
+			//obtain the bitmap
+   
+			InputStream inputStream =msocket.getInputStream();
+   
+   ///....................设置btye缓冲数据池的操作
+   
+   int readnum = inputStream.read(smallbuffer);//将输入流读入到smallbuffer中。readnum是获取的个数。
+   
+   System.arraycopy(smallbuffer, 0, mybuffer, num, readnum);//将smallbuffer复制到mybuffer中。mybuffer大小为14500540。与服务器转发时的大小一样
+   //arraycopy(Object src, int srcPos, Object dest, int destPos, int length)
+			// src:源数组； srcPos:源数组要复制的起始位置； dest:目的数组； destPos:目的数组放置的起始位置； length:复制的长度。
+   
+   Bitmap mybitmap = BitmapFactory.decodeByteArray(mybuffer, 0, size);//获取网络图片、、可以在后面加上mybitmap.rec。。。。0：解码开始的位置，size：arraybyte的长度
+   
+### 11、对于Bitmap的使用回收 
 　1) 要及时回收Bitmap的内存
 
 　　Bitmap类有一个方法recycle()，从方法名可以看出意思是回收。这里就有疑问了，Android系统有自己的垃圾回收机制，可以不定期的回收掉不使用的内存空间，当然也包括Bitmap的空间。那为什么还需要这个方法呢?
@@ -259,3 +288,22 @@ surfaceDestroyed（）（意义：在一个 surface 被销毁前，这个方法�
 　　如果程序的图片的来源都是程序包中的资源，或者是自己服务器上的图片，图片的大小是开发者可以调整的，那么一般来说，就只需要注意使用的图片不要过大，并且注意代码的质量，及时回收Bitmap对象，就能避免OutOfMemory异常的发生。
 
 　　如果程序的图片来自外界，这个时候就特别需要注意OutOfMemory的发生。一个是如果载入的图片比较大，就需要先缩小;另一个是一定要捕获异常，避免程序Crash。
+  
+  ### 12、保存视频流中的一个照片
+  msocket = new Socket();
+			msocket.bind(null);//绑定一个名字
+			/*调用bind()函数之后，为socket()函数创建的套接字关联一个相应地址，发送到这个地址的数据可以通过该套接字读取与使用。*/
+			msocket.setSoTimeout(SOCKET_TIMEOUT);//超过10秒后
+			msocket.connect(new InetSocketAddress(address, port), SOCKET_TIMEOUT);
+			//obtain the bitmap
+			InputStream in = msocket.getInputStream();
+
+			Bitmap bitmap = BitmapFactory.decodeStream(in);
+   
+			FileOutputStream fos = new FileOutputStream(savePath + "/" + fileName);
+   
+			bitmap.compress(Bitmap.CompressFormat.JPEG, 80, fos);//图片压缩技术，压缩率25%,压缩并保存
+
+			if(fos != null){
+				fos.close() ;
+			}
