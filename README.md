@@ -289,8 +289,8 @@ SocketAddress只是个抽象类，它除了有一个默认的构造方法外，�
 
 　　如果程序的图片来自外界，这个时候就特别需要注意OutOfMemory的发生。一个是如果载入的图片比较大，就需要先缩小;另一个是一定要捕获异常，避免程序Crash。
   
-  ### 12、保存视频流中的一个照片
-  msocket = new Socket();
+### 12、保存视频流中的一个照片
+ 			 msocket = new Socket();
 			msocket.bind(null);//绑定一个名字
 			/*调用bind()函数之后，为socket()函数创建的套接字关联一个相应地址，发送到这个地址的数据可以通过该套接字读取与使用。*/
 			msocket.setSoTimeout(SOCKET_TIMEOUT);//超过10秒后
